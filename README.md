@@ -1,2 +1,2 @@
 # Cms_Redux
-Cms project
+Cms project for Testing Redux in Reactjs
