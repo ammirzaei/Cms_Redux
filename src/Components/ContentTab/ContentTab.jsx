@@ -8,28 +8,28 @@ const ContentTab = () => {
   };
 
   return (
-    <ul class="content__tabs">
-      <li class={`content__tab ${active("/users")}`}>
-        <Link to="/users" class="content__tab-link">
-          <span class="fa fa-user"></span>
+    <ul className="content__tabs">
+      <li className={`content__tab ${active("/users")}`}>
+        <Link to="/users" className="content__tab-link">
+          <span className="fa fa-user"></span>
           کاربران
         </Link>
       </li>
-      <li class={`content__tab ${active("/infos")}`}>
-        <Link to="/infos" class="content__tab-link">
-          <span class="fa fa-book"></span>
+      <li className={`content__tab ${active("/infos")}`}>
+        <Link to="/infos" className="content__tab-link">
+          <span className="fa fa-book"></span>
           اطلاعات
         </Link>
       </li>
-      <li class={`content__tab ${active("/courses")}`}>
-        <Link to="/courses" class="content__tab-link">
-          <span class="fa fa-store"></span>
+      <li className={`content__tab ${active("/courses")}`}>
+        <Link to="/courses" className="content__tab-link">
+          <span className="fa fa-store"></span>
           دوره‌ها
         </Link>
       </li>
-      <li class={`content__tab ${active("/articles")}`}>
-        <Link to="/articles" class="content__tab-link">
-          <span class="fa fa-newspaper"></span>
+      <li className={`content__tab ${active("/articles")}`}>
+        <Link to="/articles" className="content__tab-link">
+          <span className="fa fa-newspaper"></span>
           وبلاگ
         </Link>
       </li>

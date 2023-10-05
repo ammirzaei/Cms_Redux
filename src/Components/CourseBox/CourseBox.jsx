@@ -1,51 +1,66 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import swal from "sweetalert";
+import { deleteCourse } from "../../Redux/store/courses";
 
-export default function CourseBox() {
+export default function CourseBox({course}) {
+  const dispatch = useDispatch();
+
+  const onDeletedCourse = ()=>{
+    swal({
+      title: 'آیا از حذف این دوره مطمئن هستید؟',
+      icon: 'warning',
+      buttons: ['خیر', 'بله']
+    }).then(result => {
+      if(result) dispatch(deleteCourse(course._id));
+    })
+  }
+
   return (
-    <div class="products__item">
+    <div className="products__item">
       <img
         src="../../img/store/redux.png"
         alt="product-img-1"
-        class="products__img"
+        className="products__img"
       />
-      <div class="products__details w-100">
-        <div class="products__info">
-          <h3 class="products__name">دوره متخصص ریداکس</h3>
-          <p class="products__short-desc">
-            لورم ایپسوم متن ساختگی برای پروتوتایپ اپلیکیشن های ...
+      <div className="products__details w-100">
+        <div className="products__info">
+          <h3 className="products__name">{course.title}</h3>
+          <p className="products__short-desc">
+            {course.desc}
           </p>
         </div>
-        <div class="products__tags">
-          <div class="products__boxes">
-            <div class="products__price-box">
-              <span class="fa fa-wallet"></span>
+        <div className="products__tags">
+          <div className="products__boxes">
+            <div className="products__price-box">
+              <span className="fa fa-wallet"></span>
 
-              <span class="product__teg-text">قیمت :</span>
-              <span class="product__teg-text products__price-value">35000</span>
+              <span className="product__teg-text"> قیمت : </span>
+              <span className="product__teg-text products__price-value">{course.price === 0 ? 'رایگان' : course.price.toLocaleString()}</span>
             </div>
-            <div class="products__category-box">
-              <span class="fa fa-folder"></span>
+            <div className="products__category-box">
+              <span className="fa fa-folder"></span>
 
-              <span class="product__teg-text">دسته بندی:</span>
-              <span class="product__teg-text products__category">
-                فرانت اند
+              <span className="product__teg-text"> دسته بندی: </span>
+              <span className="product__teg-text products__category">
+                {course.category}
               </span>
             </div>
-            <div class="products__shop-box">
-              <span class="fa fa-users"></span>
+            <div className="products__shop-box">
+              <span className="fa fa-users"></span>
 
-              <span class="product__teg-text">تعداد فروش :</span>
-              <span class="product__teg-text products__sell">10</span>
+              <span className="product__teg-text"> تعداد ثبت نام : </span>
+              <span className="product__teg-text products__sell">{course.registersCount}</span>
             </div>
           </div>
-          <div class="products__btns">
-            <button class="btn btn-danger btn-lg">حذف</button>
-            <button class="btn btn-info btn-lg">ویرایش</button>
+          <div className="products__btns">
+            <button className="btn btn-danger btn-lg" onClick={onDeletedCourse}>حذف</button>
+            <button className="btn btn-info btn-lg">ویرایش</button>
           </div>
         </div>
       </div>
 
-      <div class="product__discount-Box">30%</div>
+      {course.discount && <div className="product__discount-Box">{course.discount}%</div>}
     </div>
   );
 }
